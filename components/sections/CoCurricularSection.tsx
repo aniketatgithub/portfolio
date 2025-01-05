@@ -81,7 +81,7 @@ export function CoCurricularSection() {
           viewport={{ once: true }}
           className="text-4xl font-extrabold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70"
         >
-          Co-Curricular &amp; Achievements
+          Co-Curricular and Achievements
         </motion.h2>
 
         {/* SVG Divider */}

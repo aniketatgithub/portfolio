@@ -17,7 +17,7 @@ export function AboutSection() {
     },
     {
       icon: <Cloud className="h-6 w-6" />,
-      title: "Cloud &amp; DevOps",
+      title: "Cloud and DevOps",
       items: ["AWS / Azure", "Docker", "Kubernetes", "GitHub Actions", "Jenkins"],
     },
   ];

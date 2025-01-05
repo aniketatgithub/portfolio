@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 const publications = [
   {
     title: "A Review on Machine Learning Tools and Techniques",
-    journal: "International Journal for Research in Applied Science &amp; Engineering Technology (IJRASET)",
+    journal: "International Journal for Research in Applied Science and; Engineering Technology (IJRASET)",
     date: "Jun 6, 2022",
     description: "This paper highlights key machine learning tools for modeling, visualization, and problem-solving, used by leaders like Netflix and Amazon.",
     link: "https://www.ijraset.com/best-journal/a-review-on-machine-learning-tools-and-techniques"
