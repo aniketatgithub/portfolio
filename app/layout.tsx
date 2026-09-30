@@ -1,15 +1,30 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme-provider';
-import { Toaster } from '@/components/ui/toaster';
+import type { Metadata } from "next";
+import { Fraunces, Inter } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'] });
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: 'Aniket - Software Engineer&apos;s Learner' // HTML entity for apostrophe in JSX
-,
-  description: 'Portfolio showcasing my work in software engineering, machine learning, and product design',
+  metadataBase: new URL("https://aniket-tikariha.web.app"),
+  title: "Aniket Tikariha — Production Engineer",
+  description:
+    "Production Engineer at Meta building AI-native product systems. Previously NetApp, Viasat, and Cheeni Labs. M.S. Software Engineering, San José State University.",
+  openGraph: {
+    title: "Aniket Tikariha — Production Engineer",
+    description:
+      "Production Engineer at Meta building AI-native product systems. Previously NetApp, Viasat, and Cheeni Labs.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -18,17 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster />
-        </ThemeProvider>
+    <html lang="en" className="scroll-smooth">
+      <body
+        className={`${fraunces.variable} ${inter.variable} bg-[#0a0a0b] font-sans text-zinc-100 antialiased selection:bg-amber-400 selection:text-black`}
+      >
+        {children}
       </body>
     </html>
   );

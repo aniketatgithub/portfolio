@@ -1,26 +1,28 @@
-import { Navbar } from '@/components/layout/navbar';
-import { HeroSection } from '@/components/hero/hero-section';
-import { AboutSection } from '@/components/sections/about';
-import { PublicationsSection } from '@/components/sections/publications';
-import { ProjectsSection } from '@/components/sections/projects';
-import { ExperienceSection } from '@/components/sections/experience';
-import { ContactSection } from '@/components/sections/contact';
-import { CoCurricularSection } from '@/components/sections/CoCurricularSection';
+import { SiteNav } from "@/components/SiteNav";
+import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
+import { About } from "@/components/About";
+import { Experience } from "@/components/Experience";
+import { Projects } from "@/components/Projects";
+import { Skills } from "@/components/Skills";
+import { Background } from "@/components/Background";
+import { Contact, Footer } from "@/components/Contact";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
-
-      <main className="relative">
-        <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <PublicationsSection />
-        <ProjectsSection />
-        <CoCurricularSection/>
-        <ContactSection />
+    <div className="noise relative min-h-screen bg-[#0a0a0b]">
+      <SiteNav />
+      <main>
+        <Hero />
+        <Marquee />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Background />
+        <Contact />
       </main>
-    </>
+      <Footer />
+    </div>
   );
 }
