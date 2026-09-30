@@ -8,10 +8,6 @@ import { profile } from "@/lib/data";
 export function Contact() {
   return (
     <section id="contact" className="relative scroll-mt-20 overflow-hidden py-28 md:py-44">
-      <div
-        className="absolute left-1/2 top-1/2 h-[480px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-500/[0.07] blur-[140px]"
-        aria-hidden
-      />
       <div className="relative mx-auto max-w-[1400px] px-6 text-center md:px-10">
         <Reveal>
           <p className="mb-6 text-xs uppercase tracking-[0.25em] text-amber-400">

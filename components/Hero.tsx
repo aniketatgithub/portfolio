@@ -44,14 +44,7 @@ export function Hero({ ready }: { ready: boolean }) {
   return (
     <section id="top" className="relative flex min-h-svh flex-col justify-end overflow-hidden">
       {/* backdrop */}
-      <div className="bg-grid absolute inset-0" aria-hidden />
-      <motion.div
-        className="absolute -top-32 left-1/2 h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-amber-500/10 blur-[140px]"
-        aria-hidden
-        initial={{ opacity: 0 }}
-        animate={ready ? { opacity: 1 } : {}}
-        transition={{ duration: 1.4, delay: 0.4 }}
-      />
+      <div className="absolute inset-0" aria-hidden />
 
       {/* meta row */}
       <motion.div

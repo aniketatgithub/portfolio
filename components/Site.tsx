@@ -19,7 +19,7 @@ export function Site() {
   const done = useCallback(() => setReady(true), []);
 
   return (
-    <div className="noise relative min-h-screen bg-[#0a0a0b]">
+    <div className="relative min-h-screen bg-[#0a0a0b]">
       <SmoothScroll />
       <Cursor />
       {!ready && <Preloader onDone={done} />}

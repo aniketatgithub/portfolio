@@ -38,7 +38,7 @@ export function SiteNav({ ready }: { ready: boolean }) {
             className="font-display text-lg font-semibold tracking-tight"
             onClick={() => setOpen(false)}
           >
-            AT<span className="text-amber-400">©</span>
+            aniket<span className="text-amber-400">.</span>
           </a>
           <div className="hidden items-center gap-8 text-[13px] uppercase tracking-[0.18em] md:flex">
             {links.slice(0, 4).map((l) => (
