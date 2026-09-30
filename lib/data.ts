@@ -32,20 +32,12 @@ export type Project = {
   repo?: string;
 };
 
-export type Metric = {
-  value: number;
-  prefix?: string;
-  suffix?: string;
-  label: string;
-};
-
 export type Experience = {
   company: string;
   role: string;
   dates: string;
   type: string;
-  line: string;
-  metrics: Metric[];
+  points: string[];
   tags: string[];
   current?: boolean;
 };
@@ -57,10 +49,9 @@ export const experience: Experience[] = [
     dates: "May 2025 — Now",
     type: "Full-time",
     current: true,
-    line: "I ship backend services, internal REST APIs, and distributed systems for AI-native product workflows.",
-    metrics: [
-      { value: 18, prefix: "−", suffix: "%", label: "end-to-end latency on async service integrations" },
-      { value: 35, prefix: "−", suffix: "%", label: "debugging time via deeper observability" },
+    points: [
+      "I ship backend services, internal REST APIs, and distributed systems for AI-native product workflows.",
+      "Cut end-to-end latency 18% on async integrations and debugging time 35% with deeper observability."
     ],
     tags: ["Distributed Systems", "REST APIs", "Observability"],
   },
@@ -69,10 +60,9 @@ export const experience: Experience[] = [
     role: "Software Engineer Intern",
     dates: "Feb — Apr 2025",
     type: "Internship",
-    line: "I built core backend components in Java and C++ for distributed storage that hold up under load.",
-    metrics: [
-      { value: 45, prefix: "−", suffix: "%", label: "failure rate under sustained production load" },
-      { value: 10, suffix: "k+", label: "records per cycle on storage workflows" },
+    points: [
+      "I built core backend components in Java and C++ for distributed storage that hold up under load.",
+      "Cut failure rates 45% under sustained production load; workflows handle 10k+ records per cycle."
     ],
     tags: ["Java", "C++", "Linux"],
   },
@@ -81,10 +71,9 @@ export const experience: Experience[] = [
     role: "Software Engineer",
     dates: "Jun — Dec 2024",
     type: "Full-time",
-    line: "I built secure communication services — then made them fast.",
-    metrics: [
-      { value: 37, prefix: "+", suffix: "%", label: "message delivery reliability" },
-      { value: 52, prefix: "−", suffix: "%", label: "ANRs via CPU/memory profiling" },
+    points: [
+      "I built secure communication services — then made them fast.",
+      "Message delivery reliability up 37%; ANRs down 52% via CPU/memory profiling."
     ],
     tags: ["REST APIs", "Performance", "Security"],
   },
@@ -93,10 +82,9 @@ export const experience: Experience[] = [
     role: "Software Engineer",
     dates: "2022 — 2023",
     type: "Full-time",
-    line: "I shipped a zero-to-one Android app in Kotlin that people actually used.",
-    metrics: [
-      { value: 42, prefix: "+", suffix: "%", label: "engagement on zero-to-one Android" },
-      { value: 34, prefix: "−", suffix: "%", label: "message latency" },
+    points: [
+      "I shipped a zero-to-one Android app in Kotlin that people actually used.",
+      "Engagement up 42%; message latency down 34%."
     ],
     tags: ["Kotlin", "Android", "Firebase"],
   },
