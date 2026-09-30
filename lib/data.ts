@@ -16,13 +16,20 @@ export const profile = {
   ],
 };
 
+export type Metric = {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+};
+
 export type Experience = {
   company: string;
   role: string;
   dates: string;
   type: string;
-  summary: string;
-  points: string[];
+  line: string;
+  metrics: Metric[];
   tags: string[];
   current?: boolean;
 };
@@ -34,10 +41,10 @@ export const experience: Experience[] = [
     dates: "May 2025 — Now",
     type: "Full-time",
     current: true,
-    summary: "AI-native product systems. Async integrations, −18% latency.",
-    points: [
-      "Accelerated asynchronous service integrations — end-to-end latency down 18%.",
-      "Expanded monitoring and release validation — debugging time down 35%.",
+    line: "I ship backend services, internal REST APIs, and distributed systems for AI-native product workflows.",
+    metrics: [
+      { value: 18, prefix: "−", suffix: "%", label: "end-to-end latency on async service integrations" },
+      { value: 35, prefix: "−", suffix: "%", label: "debugging time via deeper observability" },
     ],
     tags: ["Distributed Systems", "REST APIs", "Observability"],
   },
@@ -46,10 +53,10 @@ export const experience: Experience[] = [
     role: "Software Engineer Intern",
     dates: "Feb — Apr 2025",
     type: "Internship",
-    summary: "Distributed storage backend. Failure rate −45%.",
-    points: [
-      "Backend components in Java and C++ for storage workflows, 10k+ records per cycle.",
-      "Killed crash paths and contention hotspots — failure rate down 45% under load.",
+    line: "I built core backend components in Java and C++ for distributed storage that hold up under load.",
+    metrics: [
+      { value: 45, prefix: "−", suffix: "%", label: "failure rate under sustained production load" },
+      { value: 10, suffix: "k+", label: "records per cycle on storage workflows" },
     ],
     tags: ["Java", "C++", "Linux"],
   },
@@ -58,10 +65,10 @@ export const experience: Experience[] = [
     role: "Software Engineer",
     dates: "Jun — Dec 2024",
     type: "Full-time",
-    summary: "Secure comms. ANRs −52%, delivery reliability +37%.",
-    points: [
-      "Secure communication services with authenticated REST APIs — delivery reliability up 37%.",
-      "CPU/memory profiling and concurrency tuning — ANRs down 52%.",
+    line: "I built secure communication services — then made them fast.",
+    metrics: [
+      { value: 37, prefix: "+", suffix: "%", label: "message delivery reliability" },
+      { value: 52, prefix: "−", suffix: "%", label: "ANRs via CPU/memory profiling" },
     ],
     tags: ["REST APIs", "Performance", "Security"],
   },
@@ -70,10 +77,10 @@ export const experience: Experience[] = [
     role: "Software Engineer",
     dates: "2022 — 2023",
     type: "Full-time",
-    summary: "Zero-to-one Android. Engagement +42%, latency −34%.",
-    points: [
-      "Consumer Android features in Kotlin for a zero-to-one product — engagement up 42%, message latency down 34%.",
-      "Biometric auth, encrypted credentials, FCM notifications at 97% delivery reliability.",
+    line: "I shipped a zero-to-one Android app in Kotlin that people actually used.",
+    metrics: [
+      { value: 42, prefix: "+", suffix: "%", label: "engagement on zero-to-one Android" },
+      { value: 34, prefix: "−", suffix: "%", label: "message latency" },
     ],
     tags: ["Kotlin", "Android", "Firebase"],
   },
