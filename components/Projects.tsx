@@ -1,73 +1,88 @@
-"use client";
-
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import { projects } from "@/lib/data";
+import { projects, profile } from "@/lib/data";
 
 export function Projects() {
   return (
-    <section id="projects" className="relative scroll-mt-20 py-24 md:py-36">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <SectionHeading index="03" title="Selected work" />
-        <div className="grid gap-5 md:grid-cols-2">
+    <section id="projects" className="relative scroll-mt-20 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading
+          index="03"
+          title="Projects"
+          blurb="A mix of shipped side projects and deep academic builds — all AI-flavored lately."
+        />
+
+        <div className="grid gap-6 md:grid-cols-2">
           {projects.map((p, i) => (
-            <Reveal key={p.title} delay={(i % 2) * 0.08}>
-              <article
-                data-hover
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40 md:p-9"
-              >
-                <div
-                  className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-amber-500/0 blur-[80px] transition-all duration-500 group-hover:bg-amber-500/15"
-                  aria-hidden
-                />
-                <div className="flex items-start justify-between">
-                  <span className="font-mono text-xs text-zinc-600">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-zinc-500">
+            <Reveal key={p.title} delay={(i % 2) * 0.08} className="h-full">
+              <article className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:-translate-y-1 hover:border-amber-400/30 md:p-8">
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="rounded-full bg-amber-400/10 px-3 py-1 text-xs font-medium text-amber-300 ring-1 ring-amber-400/25">
                     {p.kind}
                   </span>
+                  <span className="font-mono text-xs text-zinc-500">
+                    {p.dates}
+                  </span>
                 </div>
-                <h3 className="mt-8 font-display text-4xl font-semibold tracking-tight text-zinc-50 transition-colors group-hover:text-amber-200 md:text-5xl">
+
+                <h3 className="font-display text-2xl font-semibold text-zinc-50">
                   {p.title}
                 </h3>
-                <p className="mt-3 max-w-md text-[15px] leading-relaxed text-zinc-400">
-                  {p.line}
+                <p className="mt-3 flex-1 text-[15px] leading-relaxed text-zinc-400">
+                  {p.description}
                 </p>
-                <div className="mt-auto pt-8">
-                  <p className="text-xs uppercase tracking-[0.16em] text-zinc-600">
-                    {p.tags.join(" · ")}
-                  </p>
-                  {(p.live || p.repo) && (
-                    <div className="mt-4 flex gap-3">
-                      {p.live && (
-                        <a
-                          href={p.live}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-5 py-2.5 text-[13px] font-semibold text-black transition-colors hover:bg-amber-300"
-                        >
-                          Live <ArrowUpRight size={14} />
-                        </a>
-                      )}
-                      {p.repo && (
-                        <a
-                          href={p.repo}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-5 py-2.5 text-[13px] font-medium text-zinc-300 transition-colors hover:border-amber-400/60 hover:text-amber-300"
-                        >
-                          Code <ArrowUpRight size={14} />
-                        </a>
-                      )}
-                    </div>
-                  )}
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {p.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-md bg-white/5 px-2.5 py-1 font-mono text-xs text-zinc-400"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
+
+                {(p.live || p.repo) && (
+                  <div className="mt-6 flex gap-4 border-t border-white/10 pt-5">
+                    {p.live && (
+                      <a
+                        href={p.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-amber-300 hover:text-amber-200"
+                      >
+                        Live site <ArrowUpRight size={15} />
+                      </a>
+                    )}
+                    {p.repo && (
+                      <a
+                        href={p.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400 hover:text-zinc-200"
+                      >
+                        <Github size={15} /> Source
+                      </a>
+                    )}
+                  </div>
+                )}
               </article>
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.1} className="mt-10 text-center">
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-amber-300"
+          >
+            <Github size={16} /> More on GitHub
+          </a>
+        </Reveal>
       </div>
     </section>
   );

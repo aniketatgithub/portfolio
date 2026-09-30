@@ -1,25 +1,41 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "Profile", href: "#about" },
-  { label: "Work", href: "#work" },
-  { label: "Projects", href: "#projects" },
-  { label: "Stack", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { href: "#about", label: "About" },
+  { href: "#work", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export function SiteNav() {
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-[80] border-b border-white/[0.06] bg-[#0a0a0b]/85 backdrop-blur-md">
-      <nav className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between px-6 md:px-10">
-        <a href="#top" className="font-display text-lg font-semibold tracking-tight text-zinc-50">
-          aniket<span className="text-amber-400">.</span>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-white/10 bg-[#0a0a0b]/85 backdrop-blur-xl"
+          : "bg-transparent"
+      }`}
+    >
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+        <a
+          href="#top"
+          className="font-display text-xl font-bold tracking-tight text-zinc-50"
+        >
+          AT<span className="text-amber-400">.</span>
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -27,59 +43,48 @@ export function SiteNav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-[13px] font-medium tracking-wide text-zinc-400 transition-colors hover:text-zinc-100"
+              className="text-sm text-zinc-400 transition-colors hover:text-amber-300"
             >
               {l.label}
             </a>
           ))}
           <a
             href="/resume.pdf"
-            className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-4 py-2 text-[13px] font-semibold text-zinc-950 transition-colors hover:bg-amber-300"
+            className="rounded-full border border-amber-400/40 px-4 py-1.5 text-sm font-medium text-amber-300 transition-all hover:bg-amber-400 hover:text-black"
           >
             Résumé
-            <ArrowUpRight size={14} />
           </a>
         </div>
 
         <button
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-zinc-300 hover:bg-white/5 md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-label={open ? "Close menu" : "Open menu"}
+          className="text-zinc-300 md:hidden"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <motion.nav
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.18 }}
-            className="border-t border-white/[0.06] bg-[#0a0a0b] px-6 py-4 md:hidden"
-          >
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="block rounded-lg px-2 py-3 text-[15px] font-medium text-zinc-300 hover:bg-white/5 hover:text-zinc-50"
-              >
-                {l.label}
-              </a>
-            ))}
+      {open && (
+        <div className="border-b border-white/10 bg-[#0a0a0b]/95 px-6 pb-6 backdrop-blur-xl md:hidden">
+          {links.map((l) => (
             <a
-              href="/resume.pdf"
-              className="mt-2 flex items-center justify-center gap-1.5 rounded-full bg-zinc-100 px-4 py-3 text-[15px] font-semibold text-zinc-950"
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="block py-3 text-zinc-300 hover:text-amber-300"
             >
-              Résumé
-              <ArrowUpRight size={16} />
+              {l.label}
             </a>
-          </motion.nav>
-        )}
-      </AnimatePresence>
+          ))}
+          <a
+            href="/resume.pdf"
+            className="mt-2 inline-block rounded-full border border-amber-400/40 px-4 py-1.5 text-sm font-medium text-amber-300"
+          >
+            Résumé
+          </a>
+        </div>
+      )}
     </header>
   );
 }

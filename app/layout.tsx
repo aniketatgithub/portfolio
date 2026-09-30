@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Space_Grotesk } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -8,7 +8,7 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-const grotesk = Space_Grotesk({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://aniket-tikariha.web.app"),
   title: "Aniket Tikariha — Production Engineer",
   description:
-    "Aniket Tikariha, Production Engineer at Meta. Backend systems that ship fast and stay up. Previously NetApp, Viasat, Cheeni Labs.",
+    "Production Engineer at Meta building AI-native product systems. Previously NetApp, Viasat, and Cheeni Labs. M.S. Software Engineering, San José State University.",
   openGraph: {
     title: "Aniket Tikariha — Production Engineer",
     description:
-      "Production Engineer at Meta. Backend systems that ship fast and stay up.",
+      "Production Engineer at Meta building AI-native product systems. Previously NetApp, Viasat, and Cheeni Labs.",
     type: "website",
   },
 };
@@ -33,9 +33,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${fraunces.variable} ${grotesk.variable} bg-[#0a0a0b] font-sans text-zinc-100 antialiased`}
+        className={`${fraunces.variable} ${inter.variable} bg-[#0a0a0b] font-sans text-zinc-100 antialiased selection:bg-amber-400 selection:text-black`}
       >
         {children}
       </body>

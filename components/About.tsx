@@ -1,32 +1,40 @@
-import { Words, Reveal } from "./Reveal";
+import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { profile } from "@/lib/data";
 
 export function About() {
   return (
-    <section id="about" className="relative scroll-mt-20 py-24 md:py-36">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <SectionHeading index="01" title="Profile" />
-        <Words
-          as="p"
-          text={profile.about}
-          className="max-w-5xl font-display text-3xl font-medium leading-[1.25] tracking-tight text-zinc-200 md:text-5xl md:leading-[1.2]"
-          stagger={0.02}
-        />
-        <Reveal delay={0.15} className="mt-12 md:mt-16">
-          <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
-            {profile.facts.map((f) => (
-              <div key={f.label} className="bg-[#0c0c0e] px-6 py-5">
-                <dt className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
-                  {f.label}
-                </dt>
-                <dd className="mt-2 text-[15px] font-medium text-zinc-100">
-                  {f.value}
-                </dd>
-              </div>
+    <section id="about" className="relative scroll-mt-20 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading index="01" title="About" />
+        <div className="grid gap-12 md:grid-cols-5">
+          <div className="md:col-span-3 space-y-5">
+            {profile.about.map((p, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <p className="text-lg leading-relaxed text-zinc-400">
+                  {p}
+                </p>
+              </Reveal>
             ))}
-          </dl>
-        </Reveal>
+          </div>
+          <Reveal delay={0.15} className="md:col-span-2">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+              <h3 className="mb-5 font-display text-lg font-semibold text-zinc-100">
+                Quick facts
+              </h3>
+              <dl className="space-y-4">
+                {profile.facts.map((f) => (
+                  <div key={f.label}>
+                    <dt className="text-xs uppercase tracking-widest text-zinc-500">
+                      {f.label}
+                    </dt>
+                    <dd className="mt-1 text-[15px] text-zinc-200">{f.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
