@@ -2,7 +2,6 @@
 
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 import { Words, Reveal } from "./Reveal";
-import { Magnetic } from "./Magnetic";
 import { profile } from "@/lib/data";
 
 export function Contact() {
@@ -17,7 +16,7 @@ export function Contact() {
         <Words
           as="h2"
           text="Let's talk."
-          className="font-display text-[clamp(4.5rem,17vw,15rem)] font-semibold leading-[0.9] tracking-tight text-zinc-50"
+          className="font-display text-[clamp(2.75rem,6vw,5rem)] font-semibold leading-[1.05] tracking-tight text-zinc-50"
           stagger={0.09}
         />
         <Reveal delay={0.2}>
@@ -27,18 +26,16 @@ export function Contact() {
         </Reveal>
         <Reveal delay={0.3}>
           <div className="mt-10 flex justify-center">
-            <Magnetic strength={0.35}>
-              <a
-                href={`mailto:${profile.email}`}
-                className="group inline-flex items-center gap-3 rounded-full bg-amber-400 px-10 py-5 font-display text-xl font-semibold text-black transition-colors hover:bg-amber-300 md:text-2xl"
-              >
-                {profile.email}
-                <ArrowUpRight
-                  size={22}
-                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
-            </Magnetic>
+            <a
+              href={`mailto:${profile.email}`}
+              className="group inline-flex items-center gap-3 rounded-full bg-amber-400 px-8 py-4 text-base font-semibold text-black transition-colors hover:bg-amber-300"
+            >
+              {profile.email}
+              <ArrowUpRight
+                size={20}
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
           </div>
         </Reveal>
         <Reveal delay={0.4}>
